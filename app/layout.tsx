@@ -28,9 +28,22 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="flex min-h-screen">
+        {/* Desktop / Tablet */}
+        <div className="hidden md:flex min-h-screen">
           <Sidebar />
           <main className="flex-1">{children}</main>
+        </div>
+
+        {/* Mobile fallback */}
+        <div className="md:hidden min-h-screen flex items-center justify-center p-6 text-center">
+          <div className="max-w-sm">
+            <h1 className="text-2xl font-semibold mb-2">
+              Not available on mobile
+            </h1>
+            <p className="text-muted-foreground">
+              Please use a tablet or desktop device to access this dashboard.
+            </p>
+          </div>
         </div>
       </body>
     </html>
